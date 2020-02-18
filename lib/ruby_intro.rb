@@ -1,17 +1,41 @@
+require 'set'
+
 # When done, submit this entire file to the autograder.
 
 # Part 1
 
 def sum arr
   # YOUR CODE HERE
+  unless arr.is_a? Array
+    return 0
+  end
+  arr.sum
 end
 
 def max_2_sum arr
   # YOUR CODE HERE
+  if (!arr.is_a? Array)  || arr.empty?
+    return 0
+  end
+  if arr.size == 1
+    return arr[0]
+  end
+  arr.sort.reverse!.slice(0, 2).sum
 end
 
 def sum_to_n? arr, n
   # YOUR CODE HERE
+  unless arr.is_a? Array
+    return false
+  end
+  set = Set.new
+  arr.each do |num|
+    if set.include?  n - num
+      return true
+    end
+    set.add num
+  end
+  false
 end
 
 # Part 2
