@@ -42,14 +42,28 @@ end
 
 def hello(name)
   # YOUR CODE HERE
+  "Hello, " + name
 end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
+  if (!s.is_a? String) || s.size == 0
+    return false
+  end
+  s.downcase.match? /^(?![aeiou])[[a-z]]/
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  unless s.match? /^[01]+$/
+    return false
+  end
+  num = 0
+  s.each_char do |x|
+    num *= 2
+    num += x.ord - '0'.ord
+  end
+  num % 4 == 0
 end
 
 # Part 3
