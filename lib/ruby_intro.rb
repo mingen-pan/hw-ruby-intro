@@ -70,4 +70,21 @@ end
 
 class BookInStock
 # YOUR CODE HERE
+  def initialize isbn, price
+    unless isbn.match? /^[a-zA-Z0-9\-]+$/
+      raise ArgumentError
+    end
+    unless (price.is_a? Numeric) && (price > 0)
+      raise ArgumentError
+    end
+    @isbn = isbn
+    @price = price
+  end
+
+  attr_accessor :isbn
+  attr_accessor :price
+
+  def price_as_string
+    "$#{'%.2f' % @price.round(2)}"
+  end
 end
